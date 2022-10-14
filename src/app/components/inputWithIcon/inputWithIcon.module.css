@@ -1,0 +1,19 @@
+.outlineNone{
+   outline: none;
+   box-shadow: none 
+}
+
+.outlineNone:focus{
+   outline: none;
+   box-shadow: none 
+}
+
+.welcome {
+   font-size: var(--px-mediun);
+   color: var(--primary);
+   font-weight: var(--fw-three);
+}
+
+.eyesIcon {
+   width: 25px;
+}
