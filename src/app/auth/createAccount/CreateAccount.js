@@ -8,7 +8,6 @@ import AccountIcon from "../../../assets/icons/account.svg";
 
 //hook
 import { useForm } from "../../hooks/useForm";
-import { useLoading } from '../../hooks/useLoading';
 
 //components
 import { AutoComplete } from "../../components/autocomplete/AutoComplete";
@@ -31,8 +30,6 @@ const languages = [
 
 export const CreateAccount = () => {
 
-  const { loading } = useLoading();
-
   const { state, handleChange, handleChangeCheck } = useForm({
     email: "",
     password: "",
@@ -46,10 +43,6 @@ export const CreateAccount = () => {
     e.preventDefault();
     console.log(state);
   };
-
-  if (loading) {
-    return <div>cargando...</div>;
-  }
 
   return (
     <div className="container pt-3">
@@ -167,7 +160,7 @@ export const CreateAccount = () => {
           <div className={"pb-3 " + styles.containerNotAccount}>
             <strong>
               have an account ? &nbsp;
-              <Link to="/" className={styles.colorPrimary}>
+              <Link to="/auth" className={styles.colorPrimary}>
                 Log in
               </Link>
               &nbsp; instead.

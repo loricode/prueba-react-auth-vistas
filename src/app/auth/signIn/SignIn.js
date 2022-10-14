@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 //hook
 import { useForm } from "../../hooks/useForm";
-import { useLoading } from "../../hooks/useLoading";
+
 //components
 import { InputWithIcon } from "../../components/inputWithIcon/InputWithIcon";
 
@@ -12,8 +12,6 @@ import { InputWithIcon } from "../../components/inputWithIcon/InputWithIcon";
 import MarcaImg from "../../../assets/icons/marca.png";
 
 export const SignIn = () => {
-
-  const { loading } = useLoading();
 
   const { state, handleChange, handleChangeCheck } = useForm({
     email: "",
@@ -26,9 +24,6 @@ export const SignIn = () => {
     console.log(state);
   };
 
-  if (loading) {
-    return <div>cargando...</div>;
-  }
 
   return (
     <div className="container pt-3">
@@ -106,7 +101,7 @@ export const SignIn = () => {
           <div className={styles.containerNotAccount}>
             <strong>
               Don't have an account ? &nbsp;
-              <Link className={styles.colorPrimary} to={"/createAccount"}>
+              <Link className={styles.colorPrimary} to={"createAccount"}>
                 Log in
               </Link>
               &nbsp; instead.
