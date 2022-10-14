@@ -7,43 +7,49 @@ import SearchImg from "../../../assets/icons/search.png";
 import AccountIcon from "../../../assets/icons/account.svg";
 
 //hook
-import { useForm } from '../../hooks/useForm';
+import { useForm } from "../../hooks/useForm";
+import { useLoading } from '../../hooks/useLoading';
 
 //components
-import { AutoComplete } from '../../components/autocomplete/AutoComplete';
+import { AutoComplete } from "../../components/autocomplete/AutoComplete";
 import { InputWithIcon } from "../../components/inputWithIcon/InputWithIcon";
- 
 
-//data test 
+//data test
 const countries = [
-  {id:'1', label:'colombia'},
-  {id:'2', label:'united state'},
-  {id:'3', label:'españa'},
-  {id:'4', label:'mexico' } 
-]
+  { id: "1", label: "colombia" },
+  { id: "2", label: "united state" },
+  { id: "3", label: "españa" },
+  { id: "4", label: "mexico" },
+];
 
 const languages = [
-  {id:'1', label:'español'},
-  {id:'2', label:'ingles'},
-  {id:'3', label:'frances'},
-  {id:'4', label:'portugués'} 
-]
+  { id: "1", label: "español" },
+  { id: "2", label: "ingles" },
+  { id: "3", label: "frances" },
+  { id: "4", label: "portugués" },
+];
 
 export const CreateAccount = () => {
 
-  const { state, handleChange, handleChangeCheck } = useForm({
-    email:'',
-    password:'',
-    passwordRetype:'',
-    country:{ id:'', label:''},
-    language:{ id:'', label:''},
-    terms:false
- });
+  const { loading } = useLoading();
 
- const onSubmit = e => {
+  const { state, handleChange, handleChangeCheck } = useForm({
+    email: "",
+    password: "",
+    passwordRetype: "",
+    country: { id: "", label: "" },
+    language: { id: "", label: "" },
+    terms: false,
+  });
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    console.log(state)
- }
+    console.log(state);
+  };
+
+  if (loading) {
+    return <div>cargando...</div>;
+  }
 
   return (
     <div className="container pt-3">
@@ -61,56 +67,61 @@ export const CreateAccount = () => {
                     <h5 className={styles.welcome}>Create your account</h5>
                   </div>
 
-                  <InputWithIcon 
+                  <InputWithIcon
                     name="email"
                     value={state.email}
                     handleChange={handleChange}
-                    placeholder="Email" 
+                    placeholder="Email"
                     type="text"
-                    Icon={AccountIcon} />
+                    Icon={AccountIcon}
+                  />
 
                   <InputWithIcon
-                   name="password"
-                   value={state.password}
-                   handleChange={handleChange}
-                   placeholder="Password" />
+                    name="password"
+                    value={state.password}
+                    handleChange={handleChange}
+                    placeholder="Password"
+                  />
 
-                  <InputWithIcon 
+                  <InputWithIcon
                     name="passwordRetype"
                     value={state.passwordRetype}
                     handleChange={handleChange}
-                    placeholder="Retype Password" />
+                    placeholder="Retype Password"
+                  />
 
                   <div className="mb-4 mt-4 d-flex border p-2 rounded-pill">
                     <div className="mx-2">
-                      <img className={styles.searchIcon} src={SearchImg} alt="search"/>
+                      <img
+                        className={styles.searchIcon}
+                        src={SearchImg}
+                        alt="search"
+                      />
                     </div>
 
-                    <AutoComplete 
-                      name='country'
+                    <AutoComplete
+                      name="country"
                       value={state.country}
                       handleChange={handleChange}
-                      items={countries} />
+                      items={countries}
+                    />
 
                     <div className="mx-2">
-                     <ChevronDownIcon/>
+                      <ChevronDownIcon />
                     </div>
                   </div>
 
-
                   <div className="mb-3 d-flex align-items-center border p-2 rounded-pill">
-
                     <AutoComplete
-                      name='language'
+                      name="language"
                       value={state.language}
                       handleChange={handleChange}
                       items={languages}
-                      />
+                    />
 
                     <div className="mx-2">
-                     <ChevronDownIcon/>
+                      <ChevronDownIcon />
                     </div>
-
                   </div>
 
                   <div className="row justify-content-between pt-3 pb-3 mb-3">
@@ -127,7 +138,7 @@ export const CreateAccount = () => {
                           <strong className={styles.terms}>
                             By continuing I agree to the &nbsp;
                             <Link>
-                             Terms of <br />
+                              Terms of <br />
                               Services
                             </Link>
                             &nbsp; and &nbsp;
@@ -153,10 +164,12 @@ export const CreateAccount = () => {
           </div>
           <hr />
 
-          <div className={"pb-3 "+ styles.containerNotAccount}>
+          <div className={"pb-3 " + styles.containerNotAccount}>
             <strong>
               have an account ? &nbsp;
-              <Link to="/" className={styles.colorPrimary}>Log in</Link>
+              <Link to="/" className={styles.colorPrimary}>
+                Log in
+              </Link>
               &nbsp; instead.
             </strong>
           </div>
@@ -165,7 +178,6 @@ export const CreateAccount = () => {
     </div>
   );
 };
-
 
 /*const SearchIcon = () => {
   return (
@@ -183,9 +195,19 @@ export const CreateAccount = () => {
 
 const ChevronDownIcon = () => {
   return (
-   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#5d3ec2"  viewBox="0 0 16 16">
-     <path stroke="#5d3ec2" strokeWidth="3" fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> 
-</svg>
-
-  )
-}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="#5d3ec2"
+      viewBox="0 0 16 16"
+    >
+      <path
+        stroke="#5d3ec2"
+        strokeWidth="3"
+        fillRule="evenodd"
+        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+      />
+    </svg>
+  );
+};
