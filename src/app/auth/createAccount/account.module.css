@@ -1,40 +1,11 @@
-:root{
-   --px-small:12px;
-   --px-mediun:20px;
-   --primary:#5d3ec2;
-   --primary-hover:#684bc6;
-   --fw-one:400;
-   --fw-two:500;
-   --fw-three:700;
-}
-
 .colorPrimary{
    color: var(--primary);
-}
-
-.fogotPassword{
-   color: var(--primary);
-   font-weight: var(--fw-two);
-}
-
-.outlineNone{
-   outline: none;
-   box-shadow: none 
-}
-
-.outlineNone:focus{
-   outline: none;
-   box-shadow: none 
 }
 
 .welcome {
    font-size: var(--px-mediun);
    color: var(--primary);
    font-weight: var(--fw-three);
-}
-
-.eyesIcon {
-   width: 25px;
 }
 
 .btnAuth {
@@ -49,15 +20,6 @@
 
 .checkbox {
    margin: 0 0 1em 2em;
-  
- }
- .checkbox .tag {
-   color: #595959;
-   display: block;
-   float: left;
-   font-weight: bold;
-   position: relative;
-   width: 120px;
  }
 
  .checkbox label {
@@ -85,6 +47,7 @@
    margin-left: 10px;
    border-radius: 50%;
  }
+
  .input-assumpte:checked + label::before {
    background-color: var(--primary);
  }

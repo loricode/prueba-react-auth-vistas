@@ -47,7 +47,7 @@ export const AutoComplete = ({items = [], name = '', value, handleChange}) => {
       fontSize: '90%',
       position: 'fixed',
       overflow: 'auto',
-       maxHeight: '50%',
+      maxHeight: '50%',
       zIndex: 999}}
    wrapperStyle={{
      width: "100%",
